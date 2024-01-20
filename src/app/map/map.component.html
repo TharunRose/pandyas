@@ -1,0 +1,37 @@
+<body>
+    <div id="map" style="  height: 400px;
+    width: 100%;"></div>
+    <script>
+      function initMap() {
+        var india = { lat: 20.5937, lng: 78.9629 };
+        var locations = [
+          { lat: 28.7041, lng: 77.1025, name: 'Location 1' },
+          { lat: 12.9716, lng: 77.5946, name: 'Location 2' },
+          { lat: 18.5204, lng: 73.8567, name: 'Location 3' },
+          { lat: 22.5726, lng: 88.3639, name: 'Location 4' }
+        ];
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 5,
+          center: india
+        });
+
+        locations.forEach(function(location) {
+          var marker = new google.maps.Marker({
+            position: { lat: location.lat, lng: location.lng },
+            map: map,
+            title: location.name
+          });
+
+          marker.addListener('click', function() {
+            map.setCenter(marker.getPosition());
+          });
+        });
+      }
+    </script>
+    <script
+      src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d4963.319310372204!2d0.051331!3d51.537802!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8a7dcde009f37%3A0xb6c030e473730b29!2sPANDYAS!5e0!3m2!1sen!2sin!4v1704779539171!5m2!1sen!2sin"
+      async defer
+    ></script>
+    <!-- Replace YOUR_API_KEY with your actual Google Maps API key -->
+  </body>
